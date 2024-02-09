@@ -1,8 +1,9 @@
 package ua.bieliaiev.souvenier.model;
 
+import java.io.Serializable;
 import java.time.LocalDate;
 
-public class Souvenir {
+public class Souvenir implements Serializable {
 	private String name;
 	private Manufacturer manufacturer;
 	private LocalDate releaseDate;
