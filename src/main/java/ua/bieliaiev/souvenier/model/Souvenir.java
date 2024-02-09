@@ -2,6 +2,7 @@ package ua.bieliaiev.souvenier.model;
 
 import java.io.Serializable;
 import java.time.LocalDate;
+import java.util.Objects;
 
 public class Souvenir implements Serializable {
 	private String name;
@@ -46,5 +47,19 @@ public class Souvenir implements Serializable {
 
 	public void setPrice(double price) {
 		this.price = price;
+	}
+
+	@Override
+	public boolean equals(Object o) {
+		if (this == o) return true;
+		if (!(o instanceof Souvenir souvenir)) return false;
+
+		if (!getName().equals(souvenir.getName())) return false;
+		return getManufacturer().equals(souvenir.getManufacturer());
+	}
+
+	@Override
+	public int hashCode() {
+		return Objects.hash(name, manufacturer);
 	}
 }
