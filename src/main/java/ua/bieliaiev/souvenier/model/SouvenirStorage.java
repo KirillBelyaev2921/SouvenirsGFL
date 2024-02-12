@@ -1,20 +1,20 @@
 package ua.bieliaiev.souvenier.model;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.*;
 
 public class SouvenirStorage {
-	private final List<Souvenir> souvenirs = new ArrayList<>();
+	private final Set<Souvenir> souvenirs = new HashSet<>();
+	private final Set<Manufacturer> manufacturers = new HashSet<>();
 
 	public void add(Souvenir souvenir) {
 		souvenirs.add(souvenir);
 	}
 
-	public List<Souvenir> getSouvenirs() {
+	public Collection<Souvenir> getSouvenirs() {
 		return souvenirs;
 	}
 
-	public List<Manufacturer> getManufacturers() {
-		return new ArrayList<>();
+	public Collection<Manufacturer> getManufacturers() {
+		return manufacturers;
 	}
 }

@@ -1,5 +1,6 @@
 package ua.bieliaiev.souvenier.model;
 
+import java.util.Collection;
 import java.util.List;
 
 public class SouvenirService {
@@ -9,11 +10,11 @@ public class SouvenirService {
 		souvenirs.add(souvenir);
 	}
 
-	public List<Souvenir> getSouvenirs() {
+	public Collection<Souvenir> getSouvenirs() {
 		return souvenirs.getSouvenirs();
 	}
 
-	public List<Manufacturer> getManufacturers() {
+	public Collection<Manufacturer> getManufacturers() {
 		return souvenirs.getManufacturers();
 	}
 
