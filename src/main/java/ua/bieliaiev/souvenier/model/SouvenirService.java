@@ -7,7 +7,11 @@ public class SouvenirService {
 	private final SouvenirStorage souvenirs = new SouvenirStorage();
 
 	public void addSouvenir(Souvenir souvenir) {
-		souvenirs.add(souvenir);
+		souvenirs.addSouvenir(souvenir);
+	}
+
+	public void addManufacturer(Manufacturer manufacturer) {
+		souvenirs.addManufacturer(manufacturer);
 	}
 
 	public Collection<Souvenir> getSouvenirs() {
@@ -20,7 +24,7 @@ public class SouvenirService {
 
 	public List<Souvenir> getSouvenirsByManufacturer(Manufacturer manufacturer) {
 		return getSouvenirs().stream()
-				.filter(s -> s.getManufacturer().equals(manufacturer))
+				.filter(s -> s.manufacturer().equals(manufacturer))
 				.toList();
 	}
 }

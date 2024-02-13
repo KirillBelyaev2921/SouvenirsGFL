@@ -19,13 +19,13 @@ class SouvenirServiceTest {
 	void setUp() {
 		service = new SouvenirService();
 		firstSouvenirFromOracle =
-				new Souvenir("Cup", new Manufacturer("Oracle", "US"),
+				new Souvenir("Cup", new Manufacturer("Oracle", "US", "", ""),
 						LocalDate.of(2020, Month.JANUARY, 1), 29.99);
 		secondSouvenirFromOracle =
-				new Souvenir("Plate", new Manufacturer("Oracle", "US"),
+				new Souvenir("Plate", new Manufacturer("Oracle", "US", "", ""),
 						LocalDate.of(2019, Month.FEBRUARY, 12), 9.99);
 		otherSouvenir =
-				new Souvenir("Cup", new Manufacturer("Google", "US"),
+				new Souvenir("Cup", new Manufacturer("Google", "US", "", ""),
 						LocalDate.of(2024, Month.FEBRUARY, 5), 24.99);
 	}
 
@@ -39,7 +39,7 @@ class SouvenirServiceTest {
 
 	@Test
 	void testSouvenirsByManufacturer() {
-		Manufacturer m = new Manufacturer("Oracle", "US");
+		Manufacturer m = new Manufacturer("Oracle", "US", "", "");
 
 		service.addSouvenir(firstSouvenirFromOracle);
 		service.addSouvenir(secondSouvenirFromOracle);
