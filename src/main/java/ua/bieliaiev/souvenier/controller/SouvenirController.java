@@ -125,4 +125,24 @@ public class SouvenirController {
 		});
 		return result.toString();
 	}
+
+	public String getManufacturersBySouvenirNameAndYear(String name, String year) {
+		int newYear;
+		try {
+			newYear = Integer.parseInt(year);
+		} catch (NumberFormatException e) {
+			return "";
+		}
+		int intYear = newYear;
+		StringBuilder result = new StringBuilder();
+		Collection<Manufacturer> manufacturers = service.getManufacturers();
+		manufacturers.forEach(m -> {
+			List<Souvenir> souvenirs = service.getSouvenirsByNameAndManufacturerAndYear(name, m, intYear);
+			if (!souvenirs.isEmpty()) {
+				result.append(m).append('\n');
+				souvenirs.forEach(s -> result.append('\t').append(s).append('\n'));
+			}
+		});
+		return result.toString();
+	}
 }

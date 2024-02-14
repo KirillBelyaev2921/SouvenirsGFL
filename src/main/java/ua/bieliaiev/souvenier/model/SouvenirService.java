@@ -71,4 +71,10 @@ public class SouvenirService {
 			throw new RuntimeException(e);
 		}
 	}
+
+	public List<Souvenir> getSouvenirsByNameAndManufacturerAndYear(String name, Manufacturer manufacturer, int year) {
+		return getSouvenirs().stream().filter(s ->
+				s.name().equals(name) && s.manufacturer().equals(manufacturer)
+						&& s.releaseDate().getYear() == year).toList();
+	}
 }
