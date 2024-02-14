@@ -10,7 +10,7 @@ import java.util.Collection;
 import java.util.List;
 
 public class SouvenirController {
-	private SouvenirService service;
+	private final SouvenirService service;
 
 	public SouvenirController(SouvenirService service) {
 		this.service = service;
@@ -45,5 +45,9 @@ public class SouvenirController {
 
 	public boolean addManufacturer(String name, String country, String email, String phone) {
 		return addManufacturer(new Manufacturer(name, country, email, phone));
+	}
+
+	public void saveData() {
+		service.saveData();
 	}
 }

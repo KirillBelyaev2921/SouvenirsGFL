@@ -20,7 +20,7 @@ public class SouvenirFrame {
 		frame.addWindowListener(new WindowAdapter() {
 			@Override
 			public void windowClosing(WindowEvent e) {
-				// TODO save the souvenirs
+				controller.saveData();
 				System.exit(0);
 			}
 		});
