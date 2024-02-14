@@ -22,4 +22,26 @@ public class SouvenirStorage implements Serializable {
 	public Collection<Manufacturer> getManufacturers() {
 		return manufacturers;
 	}
+
+	public void replaceSouvenir(Souvenir previous, Souvenir newSouvenir) {
+		souvenirs.remove(previous);
+		addSouvenir(newSouvenir);
+	}
+
+	public void replaceManufacturer(Manufacturer previous, Manufacturer newManufacturer) {
+		manufacturers.remove(previous);
+		addManufacturer(newManufacturer);
+
+		var previousSouvenirs = getSouvenirsByManufacturer(previous);
+		previousSouvenirs.forEach(souvenirs::remove);
+		souvenirs.addAll(previousSouvenirs.stream()
+				.map(s -> new Souvenir(s.name(), newManufacturer, s.releaseDate(), s.price()))
+				.toList());
+	}
+
+	public List<Souvenir> getSouvenirsByManufacturer(Manufacturer manufacturer) {
+		return getSouvenirs().stream()
+				.filter(s -> s.manufacturer().equals(manufacturer))
+				.toList();
+	}
 }

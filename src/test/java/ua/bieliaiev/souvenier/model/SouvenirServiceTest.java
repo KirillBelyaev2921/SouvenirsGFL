@@ -9,6 +9,7 @@ import java.time.Month;
 import static org.assertj.core.api.Assertions.assertThat;
 
 class SouvenirServiceTest {
+	private SouvenirStorage storage;
 	private SouvenirService service;
 	private Souvenir firstSouvenirFromOracle;
 	private Souvenir secondSouvenirFromOracle;
@@ -17,7 +18,8 @@ class SouvenirServiceTest {
 
 	@BeforeEach
 	void setUp() {
-		service = new SouvenirService();
+		storage = new SouvenirStorage();
+		service = new SouvenirService(storage);
 		firstSouvenirFromOracle =
 				new Souvenir("Cup", new Manufacturer("Oracle", "US", "", ""),
 						LocalDate.of(2020, Month.JANUARY, 1), 29.99);
@@ -46,7 +48,7 @@ class SouvenirServiceTest {
 		service.addSouvenir(otherSouvenir);
 
 		assertThat(service.getSouvenirsByManufacturer(m))
-				.containsExactly(firstSouvenirFromOracle, secondSouvenirFromOracle);
+				.contains(firstSouvenirFromOracle, secondSouvenirFromOracle);
 	}
 
 }

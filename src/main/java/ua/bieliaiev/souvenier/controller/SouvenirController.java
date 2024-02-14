@@ -37,27 +37,60 @@ public class SouvenirController {
 	}
 
 	public boolean addSouvenir(String name, Manufacturer manufacturer, String date, String price) {
-		if (manufacturer == null) return false;
-		if (name.isBlank()) return false;
-		if (date.isBlank()) return false;
-		if (price.isBlank()) return false;
-		try {
-			date = date + ".01";
-			LocalDate newDate = LocalDate.parse(date, DateTimeFormatter.ofPattern("yyyy'.'MM'.'dd"));
-			double newPrice = Double.parseDouble(price);
-			return addSouvenir(new Souvenir(name, manufacturer, newDate, newPrice));
-		} catch (NumberFormatException e) {
+		Souvenir newSouvenir = parseSouvenir(name, manufacturer, date, price);
+		if (newSouvenir == null) {
 			return false;
+		} else {
+			return addSouvenir(newSouvenir);
 		}
 	}
 
 	public boolean addManufacturer(String name, String country, String email, String phone) {
-		if (name.isBlank()) return false;
-		if (country.isBlank()) return false;
-		return addManufacturer(new Manufacturer(name, country, email, phone));
+		return addManufacturer(parseManufacturer(name, country, email, phone));
 	}
 
 	public void saveData() {
 		service.saveData();
+	}
+
+	public boolean editSouvenir(Souvenir past, String name, Manufacturer manufacturer, String date, String price) {
+		if (past == null) return false;
+		Souvenir newSouvenir = parseSouvenir(
+				name, manufacturer, date, price);
+		if (past.exactSame(newSouvenir)) return false;
+
+		service.editSouvenir(past, newSouvenir);
+		return true;
+	}
+
+	public boolean editManufacturer(Manufacturer past, String name, String country, String email, String phone) {
+		if (past == null) return false;
+		Manufacturer newManufacturer = parseManufacturer(
+				name, country, email, phone);
+		if (past.exactSame(newManufacturer)) return false;
+
+		service.editManufacturer(past, newManufacturer);
+		return true;
+	}
+
+	private Souvenir parseSouvenir(String name, Manufacturer manufacturer, String date, String price) {
+		if (manufacturer == null) return null;
+		if (name.isBlank()) return null;
+		if (date.isBlank()) return null;
+		if (price.isBlank()) return null;
+		try {
+			date = date + ".01";
+			LocalDate newDate = LocalDate.parse(date, DateTimeFormatter.ofPattern("yyyy'.'MM'.'dd"));
+			double newPrice = Double.parseDouble(price);
+			return new Souvenir(name, manufacturer, newDate, newPrice);
+		} catch (Exception e) {
+			return null;
+		}
+	}
+
+	private Manufacturer parseManufacturer(String name, String country, String email, String phone) {
+		if (name.isBlank()) return null;
+		if (country.isBlank()) return null;
+		return new Manufacturer(name, country, email, phone);
 	}
 }

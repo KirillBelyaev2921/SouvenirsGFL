@@ -13,12 +13,24 @@ public class SouvenirService {
 		souvenirs = fileHandler.readSouvenirs();
 	}
 
+	public SouvenirService(SouvenirStorage souvenirs) {
+		this.souvenirs = souvenirs;
+		this.fileHandler = null;
+	}
+
 	public boolean addSouvenir(Souvenir souvenir) {
 		return souvenirs.addSouvenir(souvenir);
 	}
 
 	public boolean addManufacturer(Manufacturer manufacturer) {
 		return souvenirs.addManufacturer(manufacturer);
+	}
+
+	public void editSouvenir(Souvenir previous, Souvenir newSouvenir) {
+		souvenirs.replaceSouvenir(previous, newSouvenir);
+	}
+	public void editManufacturer(Manufacturer previous, Manufacturer newManufacturer) {
+		souvenirs.replaceManufacturer(previous, newManufacturer);
 	}
 
 	public Collection<Souvenir> getSouvenirs() {
@@ -30,9 +42,7 @@ public class SouvenirService {
 	}
 
 	public List<Souvenir> getSouvenirsByManufacturer(Manufacturer manufacturer) {
-		return getSouvenirs().stream()
-				.filter(s -> s.manufacturer().equals(manufacturer))
-				.toList();
+		return souvenirs.getSouvenirsByManufacturer(manufacturer);
 	}
 
 	public void saveData() {

@@ -26,8 +26,17 @@ public record Souvenir(String name, Manufacturer manufacturer, LocalDate release
 	public String toString() {
 		return  name +
 				", (" + manufacturer +
-				"), " + releaseDate.format(DateTimeFormatter.ofPattern("yyyy' of 'MMMM")) +
+				"), " + dateString() +
 				", " + price +
 				'$';
+	}
+
+	public String dateString() {
+		return releaseDate.format(DateTimeFormatter.ofPattern("yyyy'.'MM"));
+	}
+
+	public boolean exactSame(Souvenir s) {
+		return equals(s)
+				&& releaseDate.equals(s.releaseDate) && (price == s.price);
 	}
 }

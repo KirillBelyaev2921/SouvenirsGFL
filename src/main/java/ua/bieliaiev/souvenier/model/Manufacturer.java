@@ -23,4 +23,8 @@ public record Manufacturer(String name, String country, String email, String pho
 	public String toString() {
 		return name + ", " + country;
 	}
+
+	public boolean exactSame(Manufacturer m) {
+		return equals(m) && email.equals(m.email) && phone.equals(m.phone);
+	}
 }
