@@ -80,6 +80,21 @@ public class SouvenirController {
 		return service.removeManufacturer(manufacturer);
 	}
 
+	public List<Manufacturer> getManufacturersByAnyLowerPriceSouvenir(String price) {
+		try {
+			return service.getManufacturersByAnyLowerPriceSouvenir(Double.parseDouble(price));
+		} catch (NumberFormatException e) {
+			return List.of();
+		}
+	}
+	public List<Manufacturer> getManufacturersByAllLowerPriceSouvenir(String price) {
+		try {
+			return service.getManufacturersByAllLowerPriceSouvenir(Double.parseDouble(price));
+		} catch (NumberFormatException e) {
+			return List.of();
+		}
+	}
+
 	private Souvenir parseSouvenir(String name, Manufacturer manufacturer, String date, String price) {
 		if (manufacturer == null) return null;
 		if (name.isBlank()) return null;

@@ -21,16 +21,16 @@ public class RemoveManufacturerPanel extends MainPanel {
 		this.add(manufacturersLabel);
 		this.add(manufacturersPane);
 
-		JButton saveSouvenir = new JButton("Remove manufacturer");
-		saveSouvenir.addActionListener(e -> {
+		JButton removeManufacturer = new JButton("Remove manufacturer");
+		removeManufacturer.addActionListener(e -> {
 			if (controller.removeManufacturer(selectedManufacturer)) {
-				saveSouvenir.setText("Removed!");
-				saveSouvenir.setEnabled(false);
+				removeManufacturer.setText("Removed!");
+				removeManufacturer.setEnabled(false);
 			} else {
-				saveSouvenir.setText("Wrong data!");
+				removeManufacturer.setText("Wrong data!");
 			}
 		});
-		this.add(saveSouvenir);
+		this.add(removeManufacturer);
 
 		manufacturers.addListSelectionListener(e -> selectedManufacturer = manufacturers.getSelectedValue());
 	}

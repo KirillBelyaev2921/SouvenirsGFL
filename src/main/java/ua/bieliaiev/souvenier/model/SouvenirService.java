@@ -51,6 +51,19 @@ public class SouvenirService {
 		return souvenirs.getSouvenirsByManufacturer(manufacturer);
 	}
 
+	public List<Manufacturer> getManufacturersByAnyLowerPriceSouvenir(double price) {
+		return getSouvenirs().stream()
+				.filter(s -> s.price() <= price)
+				.map(Souvenir::manufacturer)
+				.distinct()
+				.toList();
+	}
+	public List<Manufacturer> getManufacturersByAllLowerPriceSouvenir(double price) {
+		return getManufacturers().stream()
+				.filter(m -> getSouvenirsByManufacturer(m).stream().allMatch(s -> s.price() <= price))
+				.toList();
+	}
+
 	public void saveData() {
 		try {
 			fileHandler.saveSouvenirs(souvenirs);

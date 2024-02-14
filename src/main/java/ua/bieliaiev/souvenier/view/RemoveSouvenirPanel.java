@@ -21,16 +21,16 @@ public class RemoveSouvenirPanel extends MainPanel {
 		this.add(souvenirsLabel);
 		this.add(souvenirsPane);
 
-		JButton saveSouvenir = new JButton("Remove souvenir");
-		saveSouvenir.addActionListener(e -> {
+		JButton removeSouvenir = new JButton("Remove souvenir");
+		removeSouvenir.addActionListener(e -> {
 			if (controller.removeSouvenir(selectedSouvenir)) {
-				saveSouvenir.setText("Removed!");
-				saveSouvenir.setEnabled(false);
+				removeSouvenir.setText("Removed!");
+				removeSouvenir.setEnabled(false);
 			} else {
-				saveSouvenir.setText("Wrong data!");
+				removeSouvenir.setText("Wrong data!");
 			}
 		});
-		this.add(saveSouvenir);
+		this.add(removeSouvenir);
 
 		souvenirs.addListSelectionListener(e -> selectedSouvenir = souvenirs.getSelectedValue());
 	}

@@ -52,17 +52,17 @@ public class EditManufacturerPanel extends MainPanel {
 			}
 		});
 
-		JButton saveSouvenir = new JButton("Edit manufacturer");
-		saveSouvenir.addActionListener(e -> {
+		JButton editManufacturer = new JButton("Edit manufacturer");
+		editManufacturer.addActionListener(e -> {
 			if (controller.editManufacturer(selectedManufacturer, nameField.getText(), countryField.getText(),
 					emailField.getText(), phoneField.getText())) {
-				saveSouvenir.setText("Edited!");
-				saveSouvenir.setEnabled(false);
+				editManufacturer.setText("Edited!");
+				editManufacturer.setEnabled(false);
 			} else {
-				saveSouvenir.setText("Wrong data!");
+				editManufacturer.setText("Wrong data!");
 			}
 		});
-		this.add(saveSouvenir);
+		this.add(editManufacturer);
 
 		manufacturers.addListSelectionListener(e -> {
 			selectedManufacturer = manufacturers.getSelectedValue();

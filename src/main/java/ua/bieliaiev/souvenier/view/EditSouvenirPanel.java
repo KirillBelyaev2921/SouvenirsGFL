@@ -49,17 +49,17 @@ public class EditSouvenirPanel extends MainPanel {
 		this.add(priceLabel);
 		this.add(priceField);
 
-		JButton saveSouvenir = new JButton("Edit souvenir");
-		saveSouvenir.addActionListener(e -> {
+		JButton editSouvenir = new JButton("Edit souvenir");
+		editSouvenir.addActionListener(e -> {
 			if (controller.editSouvenir(selectedSouvenir, nameField.getText(), selectedManufacturer,
 					dateField.getText(), priceField.getText())) {
-				saveSouvenir.setText("Edited!");
-				saveSouvenir.setEnabled(false);
+				editSouvenir.setText("Edited!");
+				editSouvenir.setEnabled(false);
 			} else {
-				saveSouvenir.setText("Wrong data!");
+				editSouvenir.setText("Wrong data!");
 			}
 		});
-		this.add(saveSouvenir);
+		this.add(editSouvenir);
 
 
 		souvenirs.addListSelectionListener(e -> {
