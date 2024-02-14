@@ -59,6 +59,14 @@ public class SouvenirFrame {
 		editManufacturerButton.addActionListener(e -> setPanel(new EditManufacturerPanel(controller)));
 		toolbar.add(editManufacturerButton);
 
+		JButton removeSouvenirButton = new JButton("Remove Souvenir");
+		removeSouvenirButton.addActionListener(e -> setPanel(new RemoveSouvenirPanel(controller)));
+		toolbar.add(removeSouvenirButton);
+
+		JButton removeManufacturerButton = new JButton("Remove Manufacturer");
+		removeManufacturerButton.addActionListener(e -> setPanel(new RemoveManufacturerPanel(controller)));
+		toolbar.add(removeManufacturerButton);
+
 		frame.pack();
 		frame.setLocationRelativeTo(null);
 		frame.setVisible(true);

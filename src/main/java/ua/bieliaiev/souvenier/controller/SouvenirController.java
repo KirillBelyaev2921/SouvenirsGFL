@@ -73,6 +73,13 @@ public class SouvenirController {
 		return true;
 	}
 
+	public boolean removeSouvenir(Souvenir souvenir) {
+		return service.removeSouvenir(souvenir);
+	}
+	public boolean removeManufacturer(Manufacturer manufacturer) {
+		return service.removeManufacturer(manufacturer);
+	}
+
 	private Souvenir parseSouvenir(String name, Manufacturer manufacturer, String date, String price) {
 		if (manufacturer == null) return null;
 		if (name.isBlank()) return null;

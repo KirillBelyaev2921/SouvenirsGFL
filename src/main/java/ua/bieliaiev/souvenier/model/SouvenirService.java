@@ -32,6 +32,12 @@ public class SouvenirService {
 	public void editManufacturer(Manufacturer previous, Manufacturer newManufacturer) {
 		souvenirs.replaceManufacturer(previous, newManufacturer);
 	}
+	public boolean removeSouvenir(Souvenir souvenir) {
+		return souvenirs.removeSouvenir(souvenir);
+	}
+	public boolean removeManufacturer(Manufacturer manufacturer) {
+		return souvenirs.removeManufacturer(manufacturer);
+	}
 
 	public Collection<Souvenir> getSouvenirs() {
 		return souvenirs.getSouvenirs();
