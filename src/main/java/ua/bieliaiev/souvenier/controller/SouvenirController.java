@@ -37,13 +37,23 @@ public class SouvenirController {
 	}
 
 	public boolean addSouvenir(String name, Manufacturer manufacturer, String date, String price) {
-		date = date + ".01";
-		LocalDate newDate = LocalDate.parse(date, DateTimeFormatter.ofPattern("yyyy'.'MM'.'dd"));
-		double newPrice = Double.parseDouble(price);
-		return addSouvenir(new Souvenir(name, manufacturer, newDate, newPrice));
+		if (manufacturer == null) return false;
+		if (name.isBlank()) return false;
+		if (date.isBlank()) return false;
+		if (price.isBlank()) return false;
+		try {
+			date = date + ".01";
+			LocalDate newDate = LocalDate.parse(date, DateTimeFormatter.ofPattern("yyyy'.'MM'.'dd"));
+			double newPrice = Double.parseDouble(price);
+			return addSouvenir(new Souvenir(name, manufacturer, newDate, newPrice));
+		} catch (NumberFormatException e) {
+			return false;
+		}
 	}
 
 	public boolean addManufacturer(String name, String country, String email, String phone) {
+		if (name.isBlank()) return false;
+		if (country.isBlank()) return false;
 		return addManufacturer(new Manufacturer(name, country, email, phone));
 	}
 
