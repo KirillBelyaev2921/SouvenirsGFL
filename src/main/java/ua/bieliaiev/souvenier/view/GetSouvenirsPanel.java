@@ -12,7 +12,6 @@ public class GetSouvenirsPanel extends MainPanel {
 
 		JLabel souvenirsLabel = new JLabel("All souvenirs:");
 		JList<Souvenir> souvenirs = new JList<>();
-		souvenirs.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
 		Collection<Souvenir> souvenirsList = controller.getSouvenirs();
 		souvenirs.setListData(souvenirsList.toArray(new Souvenir[0]));
 		JScrollPane souvenirsPane = new JScrollPane(souvenirs);

@@ -33,6 +33,7 @@ public class SouvenirFrame {
 
 		// Create a Debug toolbar.
 		JToolBar toolbar = new JToolBar("Toolbar");
+		toolbar.setLayout(new GridLayout(4, 4));
 		frame.add(toolbar, BorderLayout.NORTH);
 
 		JButton addSouvenirButton = new JButton("Add Souvenir");
@@ -66,6 +67,10 @@ public class SouvenirFrame {
 		JButton removeManufacturerButton = new JButton("Remove Manufacturer");
 		removeManufacturerButton.addActionListener(e -> setPanel(new RemoveManufacturerPanel(controller)));
 		toolbar.add(removeManufacturerButton);
+
+		JButton getSouvenirsByManufacturer = new JButton("Get souvenirs by manufacturer");
+		getSouvenirsByManufacturer.addActionListener(e -> setPanel(new GetSouvenirsByManufacturerPanel(controller)));
+		toolbar.add(getSouvenirsByManufacturer);
 
 		frame.pack();
 		frame.setLocationRelativeTo(null);
