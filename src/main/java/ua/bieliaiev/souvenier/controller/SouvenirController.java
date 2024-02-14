@@ -16,12 +16,12 @@ public class SouvenirController {
 		this.service = service;
 	}
 
-	public void addSouvenir(Souvenir souvenir) {
-		service.addSouvenir(souvenir);
+	public boolean addSouvenir(Souvenir souvenir) {
+		return service.addSouvenir(souvenir);
 	}
 
-	public void addManufacturer(Manufacturer manufacturer) {
-		service.addManufacturer(manufacturer);
+	public boolean addManufacturer(Manufacturer manufacturer) {
+		return service.addManufacturer(manufacturer);
 	}
 
 	public Collection<Souvenir> getSouvenirs() {
@@ -36,10 +36,14 @@ public class SouvenirController {
 		return service.getSouvenirsByManufacturer(manufacturer);
 	}
 
-	public void addSouvenir(String name, Manufacturer manufacturer, String date, String price) {
+	public boolean addSouvenir(String name, Manufacturer manufacturer, String date, String price) {
 		date = date + ".01";
 		LocalDate newDate = LocalDate.parse(date, DateTimeFormatter.ofPattern("yyyy'.'MM'.'dd"));
 		double newPrice = Double.parseDouble(price);
-		addSouvenir(new Souvenir(name, manufacturer, newDate, newPrice));
+		return addSouvenir(new Souvenir(name, manufacturer, newDate, newPrice));
+	}
+
+	public boolean addManufacturer(String name, String country, String email, String phone) {
+		return addManufacturer(new Manufacturer(name, country, email, phone));
 	}
 }

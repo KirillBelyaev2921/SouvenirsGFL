@@ -40,7 +40,7 @@ public class SouvenirFrame {
 		toolbar.add(addSouvenirButton);
 
 		JButton addManufacturerButton = new JButton("Add Manufacturer");
-
+		addManufacturerButton.addActionListener(e -> setPanel(new AddManufacturerPanel(controller)));
 		toolbar.add(addManufacturerButton);
 
 		JButton getSouvenirsButton = new JButton("Get Souvenirs");
@@ -48,6 +48,7 @@ public class SouvenirFrame {
 		toolbar.add(getSouvenirsButton);
 
 		JButton getManufacturersButton = new JButton("Get Manufacturers");
+		getManufacturersButton.addActionListener(e -> setPanel(new GetManufacturersPanel(controller)));
 		toolbar.add(getManufacturersButton);
 
 

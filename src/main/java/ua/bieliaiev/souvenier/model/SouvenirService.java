@@ -6,12 +6,12 @@ import java.util.List;
 public class SouvenirService {
 	private final SouvenirStorage souvenirs = new SouvenirStorage();
 
-	public void addSouvenir(Souvenir souvenir) {
-		souvenirs.addSouvenir(souvenir);
+	public boolean addSouvenir(Souvenir souvenir) {
+		return souvenirs.addSouvenir(souvenir);
 	}
 
-	public void addManufacturer(Manufacturer manufacturer) {
-		souvenirs.addManufacturer(manufacturer);
+	public boolean addManufacturer(Manufacturer manufacturer) {
+		return souvenirs.addManufacturer(manufacturer);
 	}
 
 	public Collection<Souvenir> getSouvenirs() {

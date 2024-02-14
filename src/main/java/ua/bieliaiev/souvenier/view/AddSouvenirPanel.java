@@ -4,6 +4,7 @@ import ua.bieliaiev.souvenier.controller.SouvenirController;
 import ua.bieliaiev.souvenier.model.Manufacturer;
 
 import javax.swing.*;
+import java.util.Collection;
 
 public class AddSouvenirPanel extends MainPanel {
 	private Manufacturer selectedManufacturer;
@@ -20,6 +21,8 @@ public class AddSouvenirPanel extends MainPanel {
 		JList<Manufacturer> manufacturers = new JList<>();
 		manufacturers.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
 		manufacturers.addListSelectionListener(e -> selectManufacturer(manufacturers.getSelectedValue()));
+		Collection<Manufacturer> manufacturersList = controller.getManufacturers();
+		manufacturers.setListData(manufacturersList.toArray(new Manufacturer[0]));
 		JScrollPane manufacturersPane = new JScrollPane(manufacturers);
 		this.add(manufacturerLabel);
 		this.add(manufacturersPane);
@@ -34,10 +37,17 @@ public class AddSouvenirPanel extends MainPanel {
 		this.add(priceLabel);
 		this.add(priceField);
 
-		JButton saveEquation = new JButton("Save equation");
-		saveEquation.addActionListener(e -> controller.addSouvenir(nameField.getText(), selectedManufacturer,
-				dateField.getText(), priceField.getText()));
-		this.add(saveEquation);
+		JButton saveSouvenir = new JButton("Save souvenir");
+		saveSouvenir.addActionListener(e -> {
+			if (controller.addSouvenir(nameField.getText(), selectedManufacturer,
+					dateField.getText(), priceField.getText())) {
+				saveSouvenir.setText("Saved!");
+				saveSouvenir.setEnabled(false);
+			} else {
+				saveSouvenir.setText("Wrong data!");
+			}
+		});
+		this.add(saveSouvenir);
 	}
 
 	private void selectManufacturer(Manufacturer selectedValue) {

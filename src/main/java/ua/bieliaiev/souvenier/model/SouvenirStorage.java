@@ -7,12 +7,12 @@ public class SouvenirStorage implements Serializable {
 	private final Set<Souvenir> souvenirs = new HashSet<>();
 	private final Set<Manufacturer> manufacturers = new HashSet<>();
 
-	public void addSouvenir(Souvenir souvenir) {
-		souvenirs.add(souvenir);
+	public boolean addSouvenir(Souvenir souvenir) {
+		return souvenirs.add(souvenir);
 	}
 
-	public void addManufacturer(Manufacturer manufacturer) {
-		manufacturers.add(manufacturer);
+	public boolean addManufacturer(Manufacturer manufacturer) {
+		return manufacturers.add(manufacturer);
 	}
 
 	public Collection<Souvenir> getSouvenirs() {
