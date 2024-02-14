@@ -18,4 +18,9 @@ public record Manufacturer(String name, String country, String email, String pho
 	public int hashCode() {
 		return Objects.hash(name, country);
 	}
+
+	@Override
+	public String toString() {
+		return name + ", " + country;
+	}
 }
