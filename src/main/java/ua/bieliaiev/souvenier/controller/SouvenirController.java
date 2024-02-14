@@ -115,4 +115,14 @@ public class SouvenirController {
 		if (country.isBlank()) return null;
 		return new Manufacturer(name, country, email, phone);
 	}
+
+	public String getManufacturersWithSouvenirs() {
+		StringBuilder result = new StringBuilder();
+		Collection<Manufacturer> manufacturers = service.getManufacturers();
+		manufacturers.forEach(m -> {
+			result.append(m).append('\n');
+			service.getSouvenirsByManufacturer(m).forEach(s -> result.append('\t').append(s).append('\n'));
+		});
+		return result.toString();
+	}
 }

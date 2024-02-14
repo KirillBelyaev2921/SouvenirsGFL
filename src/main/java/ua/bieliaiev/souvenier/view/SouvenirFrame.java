@@ -76,6 +76,10 @@ public class SouvenirFrame {
 		getManufacturersByPriceButton.addActionListener(e -> setPanel(new GetManufacturersByLowerPricePanel(controller)));
 		toolbar.add(getManufacturersByPriceButton);
 
+		JButton getManufacturersWithSouvenirsButton = new JButton("Get manufacturers with their souvenirs");
+		getManufacturersWithSouvenirsButton.addActionListener(e -> setPanel(new GetManufacturersWithSouvenirsPanel(controller)));
+		toolbar.add(getManufacturersWithSouvenirsButton);
+
 		frame.pack();
 		frame.setLocationRelativeTo(null);
 		frame.setVisible(true);

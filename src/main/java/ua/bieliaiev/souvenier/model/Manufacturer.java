@@ -21,7 +21,9 @@ public record Manufacturer(String name, String country, String email, String pho
 
 	@Override
 	public String toString() {
-		return name + ", " + country;
+		return name + ", " + country +
+				(email.isBlank() ? "" : ", " + email) +
+				(phone.isBlank() ? "" : ", " + phone);
 	}
 
 	public boolean exactSame(Manufacturer m) {
