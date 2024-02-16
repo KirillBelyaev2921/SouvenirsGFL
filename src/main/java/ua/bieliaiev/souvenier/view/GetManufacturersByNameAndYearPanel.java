@@ -1,6 +1,7 @@
 package ua.bieliaiev.souvenier.view;
 
 import ua.bieliaiev.souvenier.controller.SouvenirController;
+import ua.bieliaiev.souvenier.view.compact.LabelTextFieldPanel;
 
 import javax.swing.*;
 
@@ -8,15 +9,11 @@ public class GetManufacturersByNameAndYearPanel extends MainPanel {
 	public GetManufacturersByNameAndYearPanel(SouvenirController controller, JFrame frame) {
 		super(controller);
 
-		JLabel nameLabel = new JLabel("Enter the souvenir name:");
-		JTextField nameField = new JTextField(25);
-		this.add(nameLabel);
+		LabelTextFieldPanel nameField = new LabelTextFieldPanel("Enter the name of souvenir");
 		this.add(nameField);
 
-		JLabel yearLabel = new JLabel("Enter the souvenir release date:");
-		JTextField yearField = new JTextField(25);
-		this.add(yearLabel);
-		this.add(yearField);
+		LabelTextFieldPanel dateField = new LabelTextFieldPanel("Enter the souvenir release date:");
+		this.add(dateField);
 
 		JButton getManufacturersBySouvenirNameAndYear = new JButton("Get manufacturers by souvenir name and year");
 		this.add(getManufacturersBySouvenirNameAndYear);

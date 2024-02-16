@@ -2,6 +2,7 @@ package ua.bieliaiev.souvenier.view;
 
 import ua.bieliaiev.souvenier.controller.SouvenirController;
 import ua.bieliaiev.souvenier.model.Manufacturer;
+import ua.bieliaiev.souvenier.view.compact.LabelTextFieldPanel;
 
 import javax.swing.*;
 import java.util.List;
@@ -10,9 +11,7 @@ public class GetManufacturersByLowerPricePanel extends MainPanel {
 	public GetManufacturersByLowerPricePanel(SouvenirController controller) {
 		super(controller);
 
-		JLabel priceLabel = new JLabel("Enter the price:");
-		JTextField priceField = new JTextField(25);
-		this.add(priceLabel);
+		LabelTextFieldPanel priceField = new LabelTextFieldPanel("Enter the price:");
 		this.add(priceField);
 
 		JButton getManufacturersWhereAnyLowerPrice = new JButton("Get manufacturers which have at least 1 souvenir has lower or equal price");
