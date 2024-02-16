@@ -8,6 +8,9 @@ import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.Collection;
 import java.util.List;
+import java.util.TreeMap;
+
+import static java.util.stream.Collectors.*;
 
 public class SouvenirController {
 	private final SouvenirService service;
@@ -117,11 +120,11 @@ public class SouvenirController {
 	}
 
 	public String getManufacturersWithSouvenirs() {
+		var map = service.getSouvenirs().stream().collect(groupingBy(Souvenir::manufacturer, TreeMap::new, toList()));
 		StringBuilder result = new StringBuilder();
-		Collection<Manufacturer> manufacturers = service.getManufacturers();
-		manufacturers.forEach(m -> {
-			result.append(m).append('\n');
-			service.getSouvenirsByManufacturer(m).forEach(s -> result.append('\t').append(s).append('\n'));
+		map.forEach((k, v)-> {
+			result.append(k).append('\n');
+			v.forEach(s -> result.append('\t').append(s).append('\n'));
 		});
 		return result.toString();
 	}
@@ -133,15 +136,25 @@ public class SouvenirController {
 		} catch (NumberFormatException e) {
 			return "";
 		}
-		int intYear = newYear;
+		var map = service.getSouvenirsByNameAndManufacturerAndYear(name, newYear)
+				.stream().collect(groupingBy(Souvenir::manufacturer, TreeMap::new, toList()));
 		StringBuilder result = new StringBuilder();
-		Collection<Manufacturer> manufacturers = service.getManufacturers();
-		manufacturers.forEach(m -> {
-			List<Souvenir> souvenirs = service.getSouvenirsByNameAndManufacturerAndYear(name, m, intYear);
-			if (!souvenirs.isEmpty()) {
-				result.append(m).append('\n');
-				souvenirs.forEach(s -> result.append('\t').append(s).append('\n'));
-			}
+		map.forEach((k, v)-> {
+			result.append(k).append('\n');
+			v.forEach(s -> result.append('\t').append(s).append('\n'));
+		});
+		return result.toString();
+	}
+
+
+	public String getSouvenirsGroupingByYears() {
+		var map = service.getSouvenirs().stream().collect(groupingBy(s -> s.releaseDate().getYear(),
+				TreeMap::new, toList()));
+
+		StringBuilder result = new StringBuilder();
+		map.forEach((k, v)-> {
+			result.append(k).append('\n');
+			v.forEach(s -> result.append('\t').append(s).append('\n'));
 		});
 		return result.toString();
 	}

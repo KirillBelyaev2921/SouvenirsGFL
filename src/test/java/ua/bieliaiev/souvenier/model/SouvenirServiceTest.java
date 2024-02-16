@@ -156,7 +156,7 @@ class SouvenirServiceTest {
 		service.addSouvenir(secondSouvenirFromOracle);
 		service.addSouvenir(firstSouvenirFromGoogle);
 
-		assertThat(service.getSouvenirsByNameAndManufacturerAndYear(name, google, year))
+		assertThat(service.getSouvenirsByNameAndManufacturerAndYear(name, year))
 				.contains(firstSouvenirFromGoogle);
 	}
 

@@ -1,9 +1,10 @@
 package ua.bieliaiev.souvenier.model;
 
 import java.io.Serializable;
+import java.util.Comparator;
 import java.util.Objects;
 
-public record Manufacturer(String name, String country, String email, String phone) implements Serializable {
+public record Manufacturer(String name, String country, String email, String phone) implements Serializable, Comparable<Manufacturer> {
 
 	@Override
 	public boolean equals(Object o) {
@@ -28,5 +29,11 @@ public record Manufacturer(String name, String country, String email, String pho
 
 	public boolean exactSame(Manufacturer m) {
 		return equals(m) && email.equals(m.email) && phone.equals(m.phone);
+	}
+
+	@Override
+	public int compareTo(Manufacturer o) {
+		return Comparator.comparing(Manufacturer::name)
+				.thenComparing(Manufacturer::country).compare(this, o);
 	}
 }
