@@ -41,7 +41,4 @@ public class AddSouvenirPanel extends MainPanel {
 		this.add(saveSouvenir);
 	}
 
-	private void selectManufacturer(Manufacturer selectedValue) {
-		this.selectedManufacturer = selectedValue;
-	}
 }

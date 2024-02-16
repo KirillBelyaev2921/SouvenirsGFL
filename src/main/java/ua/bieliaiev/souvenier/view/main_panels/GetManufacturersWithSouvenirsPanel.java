@@ -2,18 +2,14 @@ package ua.bieliaiev.souvenier.view.main_panels;
 
 import ua.bieliaiev.souvenier.controller.SouvenirController;
 import ua.bieliaiev.souvenier.view.MainPanel;
-
-import javax.swing.*;
+import ua.bieliaiev.souvenier.view.compact.LabelWithTextAreaPanel;
 
 public class GetManufacturersWithSouvenirsPanel extends MainPanel {
 	public GetManufacturersWithSouvenirsPanel(SouvenirController controller) {
 		super(controller);
 
-		JLabel manufacturersLabel = new JLabel("All manufacturers:");
-		JTextArea manufacturers = new JTextArea();
+		LabelWithTextAreaPanel manufacturers = new LabelWithTextAreaPanel("All manufacturers with souvenirs:");
 		manufacturers.setText(controller.getManufacturersWithSouvenirs());
-		JScrollPane manufacturersPane = new JScrollPane(manufacturers);
-		this.add(manufacturersLabel);
-		this.add(manufacturersPane);
+		this.add(manufacturers);
 	}
 }

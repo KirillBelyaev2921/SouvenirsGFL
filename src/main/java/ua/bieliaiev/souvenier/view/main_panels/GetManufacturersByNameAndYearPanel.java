@@ -2,6 +2,7 @@ package ua.bieliaiev.souvenier.view.main_panels;
 
 import ua.bieliaiev.souvenier.controller.SouvenirController;
 import ua.bieliaiev.souvenier.view.MainPanel;
+import ua.bieliaiev.souvenier.view.compact.LabelWithTextAreaPanel;
 import ua.bieliaiev.souvenier.view.compact.LabelWithTextFieldPanel;
 
 import javax.swing.*;
@@ -19,11 +20,7 @@ public class GetManufacturersByNameAndYearPanel extends MainPanel {
 		JButton getManufacturersBySouvenirNameAndYear = new JButton("Get manufacturers by souvenir name and year");
 		this.add(getManufacturersBySouvenirNameAndYear);
 
-		JLabel manufacturersLabel = new JLabel("All manufacturers:");
-		JTextArea manufacturers = new JTextArea();
-		JScrollPane manufacturersPane = new JScrollPane(manufacturers);
-		this.add(manufacturersLabel);
-		this.add(manufacturersPane);
+		LabelWithTextAreaPanel manufacturers = new LabelWithTextAreaPanel("Manufacturers:");
 
 		getManufacturersBySouvenirNameAndYear.addActionListener(e -> {
 			String manufacturerList = controller.getManufacturersBySouvenirNameAndYear(
