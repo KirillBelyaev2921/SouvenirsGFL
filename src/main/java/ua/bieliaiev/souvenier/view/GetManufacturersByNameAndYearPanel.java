@@ -12,8 +12,8 @@ public class GetManufacturersByNameAndYearPanel extends MainPanel {
 		LabelTextFieldPanel nameField = new LabelTextFieldPanel("Enter the name of souvenir");
 		this.add(nameField);
 
-		LabelTextFieldPanel dateField = new LabelTextFieldPanel("Enter the souvenir release date:");
-		this.add(dateField);
+		LabelTextFieldPanel yearField = new LabelTextFieldPanel("Enter the souvenir release date:");
+		this.add(yearField);
 
 		JButton getManufacturersBySouvenirNameAndYear = new JButton("Get manufacturers by souvenir name and year");
 		this.add(getManufacturersBySouvenirNameAndYear);
