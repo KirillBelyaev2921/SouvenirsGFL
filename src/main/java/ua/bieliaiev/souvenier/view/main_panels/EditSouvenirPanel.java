@@ -54,8 +54,4 @@ public class EditSouvenirPanel extends MainPanel {
 			priceField.setText(selectedSouvenir.price() + "");
 		});
 	}
-
-	private void selectManufacturer(Manufacturer selectedValue) {
-		this.selectedManufacturer = selectedValue;
-	}
 }

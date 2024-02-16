@@ -4,7 +4,7 @@ import javax.swing.*;
 
 public class LabelWithTextFieldPanel extends JPanel {
 
-	private final JTextField field = new JTextField(25);;
+	private final JTextField field = new JTextField(25);
 	public LabelWithTextFieldPanel(String labelString) {
 		setLayout(new BoxLayout(this, BoxLayout.PAGE_AXIS));
 

@@ -9,13 +9,11 @@ import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 
 public class SouvenirFrame {
-	private final SouvenirController controller;
 	private MainPanel mainPanel;
 	private final JFrame frame;
 
 	public SouvenirFrame(SouvenirController controller) {
-		this.controller = controller;
-		mainPanel = new GetSouvenirsPanel(this.controller);
+		mainPanel = new GetSouvenirsPanel(controller);
 
 		frame = new JFrame("Souvenirs");
 		frame.addWindowListener(new WindowAdapter() {
