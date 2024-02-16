@@ -11,6 +11,7 @@ public class SouvenirStorage implements Serializable {
 	private final Set<Manufacturer> manufacturers = new HashSet<>();
 
 	public boolean addSouvenir(Souvenir souvenir) {
+		addManufacturer(souvenir.manufacturer());
 		return souvenirs.add(souvenir);
 	}
 
@@ -32,7 +33,7 @@ public class SouvenirStorage implements Serializable {
 	}
 
 	public void replaceManufacturer(Manufacturer previous, Manufacturer newManufacturer) {
-		removeManufacturer(previous);
+		manufacturers.remove(previous);
 		addManufacturer(newManufacturer);
 
 		var previousSouvenirs = getSouvenirsByManufacturer(previous);
