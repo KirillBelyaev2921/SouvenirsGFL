@@ -1,10 +1,11 @@
-package ua.bieliaiev.souvenier.view;
+package ua.bieliaiev.souvenier.view.main_panels;
 
 import ua.bieliaiev.souvenier.controller.SouvenirController;
 import ua.bieliaiev.souvenier.model.Manufacturer;
+import ua.bieliaiev.souvenier.view.MainPanel;
+import ua.bieliaiev.souvenier.view.compact.LabelWithListPanel;
 
 import javax.swing.*;
-import java.util.Collection;
 
 public class RemoveManufacturerPanel extends MainPanel {
 	private Manufacturer selectedManufacturer;
@@ -12,14 +13,9 @@ public class RemoveManufacturerPanel extends MainPanel {
 	public RemoveManufacturerPanel(SouvenirController controller) {
 		super(controller);
 
-		JLabel manufacturersLabel = new JLabel("All manufacturers:");
-		JList<Manufacturer> manufacturers = new JList<>();
-		manufacturers.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
-		Collection<Manufacturer> manufacturersList = controller.getManufacturers();
-		manufacturers.setListData(manufacturersList.toArray(new Manufacturer[0]));
-		JScrollPane manufacturersPane = new JScrollPane(manufacturers);
-		this.add(manufacturersLabel);
-		this.add(manufacturersPane);
+		LabelWithListPanel<Manufacturer> manufacturers = new LabelWithListPanel<>("Select manufacturer:",
+				controller.getManufacturers().stream().toList());
+		this.add(manufacturers);
 
 		JButton removeManufacturer = new JButton("Remove manufacturer");
 		removeManufacturer.addActionListener(e -> {

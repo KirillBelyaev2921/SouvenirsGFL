@@ -1,11 +1,12 @@
-package ua.bieliaiev.souvenier.view;
+package ua.bieliaiev.souvenier.view.main_panels;
 
 import ua.bieliaiev.souvenier.controller.SouvenirController;
 import ua.bieliaiev.souvenier.model.Manufacturer;
-import ua.bieliaiev.souvenier.view.compact.LabelTextFieldPanel;
+import ua.bieliaiev.souvenier.view.MainPanel;
+import ua.bieliaiev.souvenier.view.compact.LabelWithListPanel;
+import ua.bieliaiev.souvenier.view.compact.LabelWithTextFieldPanel;
 
 import javax.swing.*;
-import java.util.Collection;
 
 public class EditManufacturerPanel extends MainPanel {
 	private Manufacturer selectedManufacturer;
@@ -13,25 +14,20 @@ public class EditManufacturerPanel extends MainPanel {
 	public EditManufacturerPanel(SouvenirController controller) {
 		super(controller);
 
-		JLabel manufacturersLabel = new JLabel("All manufacturers:");
-		JList<Manufacturer> manufacturers = new JList<>();
-		manufacturers.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
-		Collection<Manufacturer> manufacturersList = controller.getManufacturers();
-		manufacturers.setListData(manufacturersList.toArray(new Manufacturer[0]));
-		JScrollPane manufacturersPane = new JScrollPane(manufacturers);
-		this.add(manufacturersLabel);
-		this.add(manufacturersPane);
+		LabelWithListPanel<Manufacturer> manufacturers = new LabelWithListPanel<>("All manufacturers:",
+				controller.getManufacturers().stream().toList());
+		this.add(manufacturers);
 
-		LabelTextFieldPanel nameField = new LabelTextFieldPanel("Enter the name of manufacturer");
+		LabelWithTextFieldPanel nameField = new LabelWithTextFieldPanel("Enter the name of manufacturer");
 		this.add(nameField);
 
-		LabelTextFieldPanel countryField = new LabelTextFieldPanel("Enter the country of manufacturer");
+		LabelWithTextFieldPanel countryField = new LabelWithTextFieldPanel("Enter the country of manufacturer");
 		this.add(countryField);
 
-		LabelTextFieldPanel emailField = new LabelTextFieldPanel("Enter the email address");
+		LabelWithTextFieldPanel emailField = new LabelWithTextFieldPanel("Enter the email address");
 		this.add(emailField);
 
-		LabelTextFieldPanel phoneField = new LabelTextFieldPanel("Enter the phone");
+		LabelWithTextFieldPanel phoneField = new LabelWithTextFieldPanel("Enter the phone");
 		this.add(phoneField);
 
 		JButton editManufacturer = new JButton("Edit manufacturer");

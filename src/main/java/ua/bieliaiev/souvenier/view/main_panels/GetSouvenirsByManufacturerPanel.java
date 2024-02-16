@@ -1,8 +1,10 @@
-package ua.bieliaiev.souvenier.view;
+package ua.bieliaiev.souvenier.view.main_panels;
 
 import ua.bieliaiev.souvenier.controller.SouvenirController;
 import ua.bieliaiev.souvenier.model.Manufacturer;
 import ua.bieliaiev.souvenier.model.Souvenir;
+import ua.bieliaiev.souvenier.view.MainPanel;
+import ua.bieliaiev.souvenier.view.compact.LabelWithListPanel;
 
 import javax.swing.*;
 import java.util.Collection;
@@ -11,13 +13,9 @@ public class GetSouvenirsByManufacturerPanel extends MainPanel {
 	public GetSouvenirsByManufacturerPanel(SouvenirController controller) {
 		super(controller);
 
-		JLabel manufacturersLabel = new JLabel("Select manufacturer:");
-		JList<Manufacturer> manufacturers = new JList<>();
-		Collection<Manufacturer> manufacturersList = controller.getManufacturers();
-		manufacturers.setListData(manufacturersList.toArray(new Manufacturer[0]));
-		JScrollPane manufacturersPane = new JScrollPane(manufacturers);
-		this.add(manufacturersLabel);
-		this.add(manufacturersPane);
+		LabelWithListPanel<Manufacturer> manufacturers = new LabelWithListPanel<>("Select manufacturer:",
+				controller.getManufacturers().stream().toList());
+		this.add(manufacturers);
 
 		JLabel souvenirsLabel = new JLabel("All souvenirs by manufacturer:");
 		JList<Souvenir> souvenirs = new JList<>();

@@ -1,25 +1,21 @@
-package ua.bieliaiev.souvenier.view;
+package ua.bieliaiev.souvenier.view.main_panels;
 
 import ua.bieliaiev.souvenier.controller.SouvenirController;
 import ua.bieliaiev.souvenier.model.Souvenir;
+import ua.bieliaiev.souvenier.view.MainPanel;
+import ua.bieliaiev.souvenier.view.compact.LabelWithListPanel;
 
 import javax.swing.*;
-import java.util.Collection;
 
 public class RemoveSouvenirPanel extends MainPanel {
 	private Souvenir selectedSouvenir;
 
 	public RemoveSouvenirPanel(SouvenirController controller) {
 		super(controller);
-
-		JLabel souvenirsLabel = new JLabel("All souvenirs:");
-		JList<Souvenir> souvenirs = new JList<>();
-		souvenirs.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
-		Collection<Souvenir> souvenirsList = controller.getSouvenirs();
-		souvenirs.setListData(souvenirsList.toArray(new Souvenir[0]));
-		JScrollPane souvenirsPane = new JScrollPane(souvenirs);
-		this.add(souvenirsLabel);
-		this.add(souvenirsPane);
+		
+		LabelWithListPanel<Souvenir> souvenirs = new LabelWithListPanel<>("All souvenirs:",
+				controller.getSouvenirs().stream().toList());
+		this.add(souvenirs);
 
 		JButton removeSouvenir = new JButton("Remove souvenir");
 		removeSouvenir.addActionListener(e -> {

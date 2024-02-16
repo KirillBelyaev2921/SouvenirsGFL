@@ -1,7 +1,8 @@
-package ua.bieliaiev.souvenier.view;
+package ua.bieliaiev.souvenier.view.main_panels;
 
 import ua.bieliaiev.souvenier.controller.SouvenirController;
 import ua.bieliaiev.souvenier.model.Souvenir;
+import ua.bieliaiev.souvenier.view.MainPanel;
 
 import javax.swing.*;
 import java.util.Collection;

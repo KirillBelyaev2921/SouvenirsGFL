@@ -1,7 +1,8 @@
-package ua.bieliaiev.souvenier.view;
+package ua.bieliaiev.souvenier.view.main_panels;
 
 import ua.bieliaiev.souvenier.controller.SouvenirController;
-import ua.bieliaiev.souvenier.view.compact.LabelTextFieldPanel;
+import ua.bieliaiev.souvenier.view.MainPanel;
+import ua.bieliaiev.souvenier.view.compact.LabelWithTextFieldPanel;
 
 import javax.swing.*;
 
@@ -10,16 +11,16 @@ public class AddManufacturerPanel extends MainPanel {
 	public AddManufacturerPanel(SouvenirController controller) {
 		super(controller);
 
-		LabelTextFieldPanel nameField = new LabelTextFieldPanel("Enter the name of manufacturer");
+		LabelWithTextFieldPanel nameField = new LabelWithTextFieldPanel("Enter the name of manufacturer");
 		this.add(nameField);
 
-		LabelTextFieldPanel countryField = new LabelTextFieldPanel("Enter the country of manufacturer");
+		LabelWithTextFieldPanel countryField = new LabelWithTextFieldPanel("Enter the country of manufacturer");
 		this.add(countryField);
 
-		LabelTextFieldPanel emailField = new LabelTextFieldPanel("Enter the email address");
+		LabelWithTextFieldPanel emailField = new LabelWithTextFieldPanel("Enter the email address");
 		this.add(emailField);
 
-		LabelTextFieldPanel phoneField = new LabelTextFieldPanel("Enter the phone");
+		LabelWithTextFieldPanel phoneField = new LabelWithTextFieldPanel("Enter the phone");
 		this.add(phoneField);
 
 		JButton saveManufacturer = new JButton("Save manufacturer");

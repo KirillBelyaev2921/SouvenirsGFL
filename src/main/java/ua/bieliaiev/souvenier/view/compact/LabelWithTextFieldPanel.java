@@ -2,10 +2,10 @@ package ua.bieliaiev.souvenier.view.compact;
 
 import javax.swing.*;
 
-public class LabelTextFieldPanel extends JPanel {
+public class LabelWithTextFieldPanel extends JPanel {
 
 	private final JTextField field = new JTextField(25);;
-	public LabelTextFieldPanel(String labelString) {
+	public LabelWithTextFieldPanel(String labelString) {
 		setLayout(new BoxLayout(this, BoxLayout.PAGE_AXIS));
 
 		JLabel label = new JLabel(labelString);

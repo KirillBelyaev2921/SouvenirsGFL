@@ -1,6 +1,7 @@
 package ua.bieliaiev.souvenier.view;
 
 import ua.bieliaiev.souvenier.controller.SouvenirController;
+import ua.bieliaiev.souvenier.view.main_panels.*;
 
 import javax.swing.*;
 import java.awt.*;
