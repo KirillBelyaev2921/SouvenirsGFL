@@ -1,7 +1,7 @@
 package ua.bieliaiev.souvenier;
 
 import ua.bieliaiev.souvenier.controller.SouvenirController;
-import ua.bieliaiev.souvenier.model.SouvenirFileHandler;
+import ua.bieliaiev.souvenier.model.SouvenirStorageFileHandler;
 import ua.bieliaiev.souvenier.model.SouvenirService;
 import ua.bieliaiev.souvenier.view.SouvenirFrame;
 
@@ -10,7 +10,7 @@ import java.io.IOException;
 public class Main {
 	public static void main(String[] args) {
 		try {
-			SouvenirFileHandler fileHandler = new SouvenirFileHandler();
+			SouvenirStorageFileHandler fileHandler = new SouvenirStorageFileHandler();
 			SouvenirService service = new SouvenirService(fileHandler);
 			SouvenirController controller = new SouvenirController(service);
 

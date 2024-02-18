@@ -4,6 +4,16 @@ import java.io.Serializable;
 import java.util.Comparator;
 import java.util.Objects;
 
+/**
+ * Class for storing data of manufacturer.
+ * This class is immutable to provide thread safety for data and
+ * not allowing to change data outside SouvenirStorage class.
+ *
+ * @param name Name of the manufacturers company
+ * @param country Country of the manufacturers company
+ * @param email Email of the manufacturers company
+ * @param phone Phone of the manufacturers company
+ */
 public record Manufacturer(String name, String country, String email, String phone) implements Serializable, Comparable<Manufacturer> {
 
 	@Override

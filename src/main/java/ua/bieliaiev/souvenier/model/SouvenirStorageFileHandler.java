@@ -4,10 +4,16 @@ import java.io.*;
 import java.nio.file.Files;
 import java.nio.file.Path;
 
-public class SouvenirFileHandler {
+/**
+ * Class that encapsulates all requests for the data file.
+ * Program based on minimizing requests to files and only get data
+ * at the start and save data at the end. All other operations with data
+ * should be done with {@link SouvenirStorage}.
+ */
+public class SouvenirStorageFileHandler {
 	private static final String FILE_NAME = "src/main/resources/souvenirs.dat";
 
-	public SouvenirFileHandler() throws IOException {
+	public SouvenirStorageFileHandler() throws IOException {
 		Path path = Path.of(FILE_NAME);
 		if (!Files.exists(path)) {
 			Files.createFile(path);

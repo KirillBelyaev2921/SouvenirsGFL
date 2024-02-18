@@ -5,6 +5,16 @@ import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.Objects;
 
+/**
+ * Class for storing data of manufacturer.
+ * This class is immutable to provide thread safety for data and
+ * not allowing to change data outside SouvenirStorage class.
+ *
+ * @param name Name of souvenir
+ * @param manufacturer Manufacturer company of souvenir
+ * @param releaseDate Release date of souvenir.
+ * @param price Price of the souvenir.
+ */
 public record Souvenir(String name, Manufacturer manufacturer, LocalDate releaseDate,
 					   double price) implements Serializable {
 

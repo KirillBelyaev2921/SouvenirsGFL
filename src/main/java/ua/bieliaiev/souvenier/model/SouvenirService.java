@@ -1,14 +1,18 @@
 package ua.bieliaiev.souvenier.model;
 
 import java.io.IOException;
-import java.util.Collection;
 import java.util.List;
 
+/**
+ * Service class to control File input and Souvenir Storage, which get data from.
+ * Get data from file at start and save it on windows closing.
+ * Manages data received from SouvenirStorage and save it there.
+ */
 public class SouvenirService {
 	private final SouvenirStorage souvenirs;
-	private final SouvenirFileHandler fileHandler;
+	private final SouvenirStorageFileHandler fileHandler;
 
-	public SouvenirService(SouvenirFileHandler fileHandler) throws IOException, ClassNotFoundException {
+	public SouvenirService(SouvenirStorageFileHandler fileHandler) throws IOException, ClassNotFoundException {
 		this.fileHandler = fileHandler;
 		souvenirs = fileHandler.readSouvenirs();
 	}
@@ -39,12 +43,12 @@ public class SouvenirService {
 		return souvenirs.removeManufacturer(manufacturer);
 	}
 
-	public Collection<Souvenir> getSouvenirs() {
-		return souvenirs.getSouvenirs();
+	public List<Souvenir> getSouvenirs() {
+		return souvenirs.getSouvenirs().stream().toList();
 	}
 
-	public Collection<Manufacturer> getManufacturers() {
-		return souvenirs.getManufacturers();
+	public List<Manufacturer> getManufacturers() {
+		return souvenirs.getManufacturers().stream().toList();
 	}
 
 	public List<Souvenir> getSouvenirsByManufacturer(Manufacturer manufacturer) {
@@ -64,16 +68,16 @@ public class SouvenirService {
 				.toList();
 	}
 
-	public void saveData() {
-		try {
-			fileHandler.saveSouvenirs(souvenirs);
-		} catch (IOException e) {
-			throw new RuntimeException(e);
-		}
-	}
-
 	public List<Souvenir> getSouvenirsByNameAndManufacturerAndYear(String name, int year) {
 		return getSouvenirs().stream().filter(s ->
 				s.name().equals(name) && s.releaseDate().getYear() == year).toList();
+	}
+
+	public void saveData() {
+		try {
+			if (fileHandler != null) fileHandler.saveSouvenirs(souvenirs);
+		} catch (IOException e) {
+			throw new RuntimeException(e);
+		}
 	}
 }
