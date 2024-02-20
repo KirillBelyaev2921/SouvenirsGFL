@@ -21,7 +21,9 @@ public class LabelWithTextAreaPanel extends JPanel {
 	}
 
 	public void setText(Collection<?> list) {
+		StringBuilder result = new StringBuilder();
 		list.forEach(o ->
-				textArea.append(" " + o.toString() + "\n"));
+				result.append(" ").append(o.toString()).append("\n"));
+		setText(result.toString());
 	}
 }

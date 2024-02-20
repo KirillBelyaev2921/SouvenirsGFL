@@ -64,7 +64,12 @@ public class SouvenirService {
 	}
 	public List<Manufacturer> getManufacturersByAllLowerPriceSouvenir(double price) {
 		return getManufacturers().stream()
-				.filter(m -> getSouvenirsByManufacturer(m).stream().allMatch(s -> s.price() <= price))
+				.filter(m -> {
+					List<Souvenir> souvenirsByManufacturer = getSouvenirsByManufacturer(m);
+					if (souvenirsByManufacturer.isEmpty()) return false;
+					return souvenirsByManufacturer
+							.stream().allMatch(s -> s.price() <= price);
+				})
 				.toList();
 	}
 

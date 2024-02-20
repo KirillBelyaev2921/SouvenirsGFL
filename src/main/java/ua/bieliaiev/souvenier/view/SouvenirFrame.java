@@ -35,33 +35,33 @@ public class SouvenirFrame {
 		toolbar.setLayout(new GridLayout(4, 4));
 		frame.add(toolbar, BorderLayout.NORTH);
 
-		JButton addSouvenirButton = new JButton("Add Souvenir");
-		addSouvenirButton.addActionListener(e -> setPanel(new AddSouvenirPanel(controller)));
-		toolbar.add(addSouvenirButton);
-
-		JButton addManufacturerButton = new JButton("Add Manufacturer");
-		addManufacturerButton.addActionListener(e -> setPanel(new AddManufacturerPanel(controller)));
-		toolbar.add(addManufacturerButton);
-
-		JButton getSouvenirsButton = new JButton("Get Souvenirs");
+		JButton getSouvenirsButton = new JButton("Get All Souvenirs");
 		getSouvenirsButton.addActionListener(e -> setPanel(new GetSouvenirsPanel(controller)));
 		toolbar.add(getSouvenirsButton);
 
-		JButton getManufacturersButton = new JButton("Get Manufacturers");
-		getManufacturersButton.addActionListener(e -> setPanel(new GetManufacturersPanel(controller)));
-		toolbar.add(getManufacturersButton);
+		JButton addSouvenirButton = new JButton("Add Souvenir");
+		addSouvenirButton.addActionListener(e -> setPanel(new AddSouvenirPanel(controller)));
+		toolbar.add(addSouvenirButton);
 
 		JButton editSouvenirButton = new JButton("Edit Souvenir");
 		editSouvenirButton.addActionListener(e -> setPanel(new EditSouvenirPanel(controller)));
 		toolbar.add(editSouvenirButton);
 
-		JButton editManufacturerButton = new JButton("Edit Manufacturer");
-		editManufacturerButton.addActionListener(e -> setPanel(new EditManufacturerPanel(controller)));
-		toolbar.add(editManufacturerButton);
-
 		JButton removeSouvenirButton = new JButton("Remove Souvenir");
 		removeSouvenirButton.addActionListener(e -> setPanel(new RemoveSouvenirPanel(controller)));
 		toolbar.add(removeSouvenirButton);
+
+		JButton getManufacturersButton = new JButton("Get All Manufacturers");
+		getManufacturersButton.addActionListener(e -> setPanel(new GetManufacturersPanel(controller)));
+		toolbar.add(getManufacturersButton);
+
+		JButton addManufacturerButton = new JButton("Add Manufacturer");
+		addManufacturerButton.addActionListener(e -> setPanel(new AddManufacturerPanel(controller)));
+		toolbar.add(addManufacturerButton);
+
+		JButton editManufacturerButton = new JButton("Edit Manufacturer");
+		editManufacturerButton.addActionListener(e -> setPanel(new EditManufacturerPanel(controller)));
+		toolbar.add(editManufacturerButton);
 
 		JButton removeManufacturerButton = new JButton("Remove Manufacturer");
 		removeManufacturerButton.addActionListener(e -> setPanel(new RemoveManufacturerPanel(controller)));

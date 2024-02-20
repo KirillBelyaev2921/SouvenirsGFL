@@ -21,6 +21,7 @@ public class GetManufacturersByNameAndYearPanel extends MainPanel {
 		this.add(getManufacturersBySouvenirNameAndYear);
 
 		LabelWithTextAreaPanel manufacturers = new LabelWithTextAreaPanel("Manufacturers:");
+		this.add(manufacturers);
 
 		getManufacturersBySouvenirNameAndYear.addActionListener(e -> {
 			String manufacturerList = controller.getManufacturersBySouvenirNameAndYear(

@@ -18,7 +18,6 @@ public class GetSouvenirsByManufacturerPanel extends MainPanel {
 		this.add(manufacturers);
 
 		LabelWithTextAreaPanel souvenirs = new LabelWithTextAreaPanel("All souvenirs by manufacturer:");
-		souvenirs.setText(controller.getSouvenirs());
 		this.add(souvenirs);
 
 		manufacturers.addListSelectionListener(e -> {
