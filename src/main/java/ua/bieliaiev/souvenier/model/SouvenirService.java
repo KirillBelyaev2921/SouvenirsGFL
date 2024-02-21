@@ -73,6 +73,12 @@ public class SouvenirService {
 				.toList();
 	}
 
+	public List<Souvenir> getSouvenirsByCountry(String country) {
+		return getSouvenirs().stream()
+				.filter(s -> s.manufacturer().country().equals(country))
+				.toList();
+	}
+
 	public List<Souvenir> getSouvenirsByNameAndManufacturerAndYear(String name, int year) {
 		return getSouvenirs().stream().filter(s ->
 				s.name().equals(name) && s.releaseDate().getYear() == year).toList();

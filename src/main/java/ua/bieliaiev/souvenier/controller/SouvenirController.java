@@ -105,6 +105,10 @@ public class SouvenirController {
 		return getListByPrice(price, service::getManufacturersByAllLowerPriceSouvenir);
 	}
 
+	public List<Souvenir> getSouvenirsByCountry(String country) {
+		return service.getSouvenirsByCountry(country);
+	}
+
 	private List<Manufacturer> getListByPrice(String price, Function<Double, List<Manufacturer>> f) {
 		OptionalDouble parsedPrice = parseDouble(price);
 		return parsedPrice.isPresent()
