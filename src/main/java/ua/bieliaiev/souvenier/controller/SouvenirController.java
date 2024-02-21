@@ -97,18 +97,33 @@ public class SouvenirController {
 		return service.getSouvenirsByManufacturer(manufacturer);
 	}
 
+	/**
+	 * Returns list of manufacturers, which have at least 1 souvenir with lower price
+	 * that price parameter.
+	 */
 	public List<Manufacturer> getManufacturersByAnyLowerPriceSouvenir(String price) {
 		return getListByPrice(price, service::getManufacturersByAnyLowerPriceSouvenir);
 	}
 
+	/**
+	 * Returns list of manufacturers, which have all their souvenirs with lower price
+	 * that price parameter. Manufacturers with no souvenirs are not included.
+	 */
 	public List<Manufacturer> getManufacturersByAllLowerPriceSouvenir(String price) {
 		return getListByPrice(price, service::getManufacturersByAllLowerPriceSouvenir);
 	}
 
+	/**
+	 * Returns list of souvenirs, which manufacturer is from country passed in parameter.
+	 */
 	public List<Souvenir> getSouvenirsByCountry(String country) {
 		return service.getSouvenirsByCountry(country);
 	}
 
+	/**
+	 * Return list of manufacturers by price and function from service.
+	 * Return empty list if price String parameter is not double.
+	 */
 	private List<Manufacturer> getListByPrice(String price, Function<Double, List<Manufacturer>> f) {
 		OptionalDouble parsedPrice = parseDouble(price);
 		return parsedPrice.isPresent()
@@ -116,11 +131,19 @@ public class SouvenirController {
 				: List.of();
 	}
 
+	/**
+	 * Returns string with manufacturers on 1 level and their souvenirs on
+	 * 2 level (with tabulation).
+	 */
 	public String getManufacturersWithSouvenirs() {
 		var map = service.getSouvenirs().stream().collect(groupingBy(Souvenir::manufacturer, TreeMap::new, toList()));
 		return getString(map);
 	}
 
+	/**
+	 * Returns string with manufacturers on 1 level and their souvenirs on
+	 * 2 level (with tabulation), that has name and release year equals to parameters.
+	 */
 	public String getManufacturersBySouvenirNameAndYear(String name, String yearString) {
 		OptionalInt oYear = parseInt(yearString);
 		if (oYear.isEmpty()) return "";
@@ -129,6 +152,10 @@ public class SouvenirController {
 		return getString(map);
 	}
 
+	/**
+	 * Returns string with years on 1 level and souvenirs released on this year on
+	 * 2 level (with tabulation).
+	 */
 	public String getSouvenirsGroupingByYears() {
 		var map = service.getSouvenirs().stream().collect(groupingBy(s -> s.releaseDate().getYear(),
 				TreeMap::new, toList()));
@@ -140,7 +167,11 @@ public class SouvenirController {
 		service.saveData();
 	}
 
-	private static String getString(TreeMap<?, List<Souvenir>> map) {
+	/**
+	 * Returns string with key on 1 level and list of objects on
+	 * 2 level (with tabulation).
+	 */
+	private static <T> String getString(TreeMap<?, List<T>> map) {
 		StringBuilder result = new StringBuilder();
 		map.forEach((k, v) -> {
 			result.append(k).append('\n');
@@ -149,6 +180,9 @@ public class SouvenirController {
 		return result.toString();
 	}
 
+	/**
+	 * Returns Souvenir object if souvenir parameters are valid, and null otherwise.
+	 */
 	private Souvenir validateSouvenir(String name, Manufacturer manufacturer, String date, String price) {
 		if (manufacturer == null) return null;
 		if (name.isBlank()) return null;
@@ -164,6 +198,9 @@ public class SouvenirController {
 		}
 	}
 
+	/**
+	 * Returns Manufacturer object if manufacturer parameters are valid, and null otherwise.
+	 */
 	private Manufacturer validateManufacturer(String name, String country, String email, String phone) {
 		if (name.isBlank()) return null;
 		if (country.isBlank()) return null;
