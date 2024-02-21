@@ -71,13 +71,13 @@ public class SouvenirFrame {
 		getSouvenirsByManufacturerButton.addActionListener(e -> setPanel(new GetSouvenirsByManufacturerPanel(controller)));
 		toolbar.add(getSouvenirsByManufacturerButton);
 
-		JButton getManufacturersByPriceButton = new JButton("Get manufacturers by lower price");
-		getManufacturersByPriceButton.addActionListener(e -> setPanel(new GetManufacturersByLowerPricePanel(controller)));
-		toolbar.add(getManufacturersByPriceButton);
-
 		JButton getManufacturersByCountryButton = new JButton("Get souvenirs by country");
 		getManufacturersByCountryButton.addActionListener(e -> setPanel(new GetManufacturersByCountryPanel(controller)));
 		toolbar.add(getManufacturersByCountryButton);
+
+		JButton getManufacturersByPriceButton = new JButton("Get manufacturers by lower price");
+		getManufacturersByPriceButton.addActionListener(e -> setPanel(new GetManufacturersByLowerPricePanel(controller)));
+		toolbar.add(getManufacturersByPriceButton);
 
 		JButton getManufacturersWithSouvenirsButton = new JButton("Get souvenirs grouping by manufacturers");
 		getManufacturersWithSouvenirsButton.addActionListener(e -> setPanel(new GetManufacturersWithSouvenirsPanel(controller)));
